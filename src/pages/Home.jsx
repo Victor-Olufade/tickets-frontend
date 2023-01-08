@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaQuestionCircle, FaTicketAlt } from 'react-icons/fa'
 import {useSelector, useDispatch} from 'react-redux'
-import process from 'process'
+
 
 const Home = () => {
   return (
