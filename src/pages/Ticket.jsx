@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getTicket, closeTicket } from '../features/tickets/ticketSlice'
-import { createNote, getNotes, reset as noteReset } from '../features/notes/noteSlice'
+import { createNote, getNotes} from '../features/notes/noteSlice'
 import Backbutton from '../components/Backbutton'
 import Spinner from '../components/Spinner'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -28,7 +28,7 @@ Modal.setAppElement('#root')
 const Ticket = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [noteText, setNoteText] = useState('')
-  const { ticket, isLoading, isError, isSuccess, message } = useSelector(
+  const { ticket, isLoading, isError, message } = useSelector(
     (state) => state.ticket
   )
   const { notes, isLoading: notesIsLoading } = useSelector(
