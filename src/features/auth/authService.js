@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:5000/api/users'
+const BASE_URL = 'https://supportdesk-api-2iay.onrender.com/api/users'
 
 const register = async(userData)=>{
     const response = await axios.post(BASE_URL, userData)

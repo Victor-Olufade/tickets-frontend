@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const BASE_URL = 'http://localhost:5000/api/tickets'
+const BASE_URL = 'https://supportdesk-api-2iay.onrender.com/api/tickets'
 
 const createTicket = async(ticketData, token)=>{
     const config = {
