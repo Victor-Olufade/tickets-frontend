@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = 'https://supportdesk-api-2iay.onrender.com/api/users'
+const BASE_URL = 'https://supportdesk-api-2iay.onrender.com'
 
 const register = async(userData)=>{
-    const response = await axios.post(BASE_URL, userData)
+    const response = await axios.post(`${BASE_URL}/api/users`, userData)
     if(response.data){
         localStorage.setItem('user', JSON.stringify(response.data))
     }
@@ -15,7 +15,7 @@ const logout = () => {
 }
 
 const login = async(userData) => {
-    const response = await axios.post(`${BASE_URL}/login`, userData)
+    const response = await axios.post(`${BASE_URL}/api/users/login`, userData)
     if(response.data){
         localStorage.setItem('user', JSON.stringify(response.data))
     }
