@@ -74,74 +74,77 @@ const Ticket = () => {
   }
 
   return (
+    <>
+    {ticket && 
     <div className="ticket-page">
-      <header className="ticket-header">
-        <Backbutton url="/tickets" />
-        <h2>
-          Ticket ID: {ticket._id}
-          <span className={`status status-${ticket.status}`}>
-            {ticket.status}
-          </span>
-        </h2>
-        <h3>
-          Date Submitted: {new Date(ticket.createdAt).toLocaleString('en-NG')}
-        </h3>
-        <h3>Product: {ticket.product}</h3>
-        <hr />
-        <div className="ticket-desc">
-          <h3>Description of issue</h3>
-          <p>{ticket.description}</p>
+    <header className="ticket-header">
+      <Backbutton url="/tickets" />
+      <h2>
+        Ticket ID: {ticket._id}
+        <span className={`status status-${ticket.status}`}>
+          {ticket.status}
+        </span>
+      </h2>
+      <h3>
+        Date Submitted: {new Date(ticket.createdAt).toLocaleString('en-NG')}
+      </h3>
+      <h3>Product: {ticket.product}</h3>
+      <hr />
+      <div className="ticket-desc">
+        <h3>Description of issue</h3>
+        <p>{ticket.description}</p>
+      </div>
+      <h2>Notes</h2>
+    </header>
+    {ticket.status !== 'closed' && (
+      <button onClick={openModal} className="btn">
+        <FaPlus />
+        Add Note
+      </button>
+    )}
+
+    <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      style={customStyles}
+      contentLabel="Add Note"
+    >
+      <h2>Add Note</h2>
+      <button onClick={closeModal} className="btn-close">
+        X
+      </button>
+      <form onSubmit={onNoteSubmit}>
+        <div className="form-group">
+          <textarea
+            id="noteText"
+            name="noteText"
+            className="form-control"
+            placeholder="Note Text"
+            value={noteText}
+            onChange={(e) => {
+              setNoteText(e.target.value)
+            }}
+          ></textarea>
         </div>
-        <h2>Notes</h2>
-      </header>
-      {ticket.status !== 'closed' && (
-        <button onClick={openModal} className="btn">
-          <FaPlus />
-          Add Note
-        </button>
-      )}
+        <div className="form-group">
+          <button type='submit' className="btn">
+              Submit
+          </button>
+        </div>
+      </form>
+    </Modal>
 
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Add Note"
-      >
-        <h2>Add Note</h2>
-        <button onClick={closeModal} className="btn-close">
-          X
-        </button>
-        <form onSubmit={onNoteSubmit}>
-          <div className="form-group">
-            <textarea
-              id="noteText"
-              name="noteText"
-              className="form-control"
-              placeholder="Note Text"
-              value={noteText}
-              onChange={(e) => {
-                setNoteText(e.target.value)
-              }}
-            ></textarea>
-          </div>
-          <div className="form-group">
-            <button type='submit' className="btn">
-                Submit
-            </button>
-          </div>
-        </form>
-      </Modal>
+    {notes && notes.map((note) => (
+      <NoteItem key={note._id} note={note} />
+    ))}
 
-      {notes.map((note) => (
-        <NoteItem key={note._id} note={note} />
-      ))}
-
-      {ticket.status !== 'closed' && (
-        <button className="btn btn-block btn-danger" onClick={onTicketClose}>
-          Close Ticket
-        </button>
-      )}
-    </div>
+    {ticket.status !== 'closed' && (
+      <button className="btn btn-block btn-danger" onClick={onTicketClose}>
+        Close Ticket
+      </button>
+    )}
+  </div>}
+    </>
   )
 }
 
