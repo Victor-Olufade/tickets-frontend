@@ -43,7 +43,7 @@ const Ticket = () => {
     }
     dispatch(getTicket(params.id))
     dispatch(getNotes(params.id))
-  }, [isError, message, params.id])
+  }, [isError, message, params.id, dispatch])
 
   if (isLoading || notesIsLoading) {
     return <Spinner />
