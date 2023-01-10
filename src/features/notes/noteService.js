@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'https://supportdesk-api-2iay.onrender.com/api/tickets'
+const BASE_URL = `${process.env.REACT_APP_DEPLOYED_URL}/api/tickets`
 
 const getNotes = async(id, token)=>{
     const config = {

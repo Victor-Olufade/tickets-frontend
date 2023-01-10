@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaQuestionCircle, FaTicketAlt } from 'react-icons/fa'
-import {useSelector, useDispatch} from 'react-redux'
 
 
 const Home = () => {
+  
   return (
     <>
     <section className='heading'>
@@ -19,6 +19,7 @@ const Home = () => {
     <Link to='/tickets' className='btn btn-block'>
         <FaTicketAlt/> View My Ticket
     </Link>
+    
     </>
   )
 }

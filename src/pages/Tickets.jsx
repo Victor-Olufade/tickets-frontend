@@ -6,7 +6,7 @@ import Backbutton from '../components/Backbutton'
 import TicketItem from '../components/TicketItem'
 
 const Tickets = () => {
-    const { tickets, isLoading, isError, isSuccess, message } = useSelector(
+    const { tickets, isLoading, isSuccess } = useSelector(
         (state) => state.ticket
       )
     const dispatch = useDispatch()
@@ -37,7 +37,7 @@ const Tickets = () => {
             <div>Status</div>
             <div></div>
         </div>
-        {tickets.map((ticket)=>(
+        {tickets && tickets.map((ticket)=>(
             <TicketItem key={ticket._id} ticket={ticket}/>
         ))}
     </div>

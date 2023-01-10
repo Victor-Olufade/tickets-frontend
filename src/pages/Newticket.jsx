@@ -8,7 +8,7 @@ import Backbutton from '../components/Backbutton'
 
 const Newticket = () => {
   const { user } = useSelector((state) => state.auth)
-  const { ticket, isLoading, isError, isSuccess, message } = useSelector(
+  const { isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.ticket
   )
   const [name] = useState(user.trueUser && user.trueUser.name)

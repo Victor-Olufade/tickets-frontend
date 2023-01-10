@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'https://supportdesk-api-2iay.onrender.com'
+const BASE_URL = process.env.REACT_APP_DEPLOYED_URL
 
 const register = async(userData)=>{
     const response = await axios.post(`${BASE_URL}/api/users`, userData)
