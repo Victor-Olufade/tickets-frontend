@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const BASE_URL = `${process.env.REACT_APP_DEPLOYED_URL}/api/tickets`
+const BASE_URL = `${process.env.REACT_APP_LOCAL_URL}/api/tickets`
 
 const createTicket = async(ticketData, token)=>{
     const config = {

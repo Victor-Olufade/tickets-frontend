@@ -34,7 +34,7 @@ const Register = () => {
     }
 
     if(isSuccess && user){
-        navigate('/')
+        navigate('/login')
     }
 
     dispatch(reset())
