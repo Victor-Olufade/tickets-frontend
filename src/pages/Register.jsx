@@ -17,7 +17,7 @@ const Register = () => {
   const { name, email, password, confirm_password } = formData
 
   const dispatch = useDispatch()
-  const {user, isLoading, isSuccess, isError, message} = useSelector(state=> state.auth)
+  const {token, isLoading, isSuccess, isError, message} = useSelector(state=> state.auth)
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -33,12 +33,12 @@ const Register = () => {
         toast.error(message)
     }
 
-    if(isSuccess && user){
-        navigate('/login')
+    if(isSuccess && token){
+        navigate('/verify')
     }
 
     dispatch(reset())
-  }, [dispatch, navigate, isError, isSuccess, user, message])
+  }, [dispatch, navigate, isError, isSuccess, token, message])
 
   const onSubmit = (e) => {
     e.preventDefault()

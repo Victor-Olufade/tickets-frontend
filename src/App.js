@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Header from './components/Header';
 import Newticket from './pages/Newticket';
+import Verification from './pages/Verification';
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import PrivateRoute from './components/PrivateRoute';
@@ -29,6 +30,9 @@ function App() {
         <Route path='/tickets/:id' element={<PrivateRoute/>}>
           <Route path='/tickets/:id' element={<Ticket/>}/>
         </Route>
+       
+          <Route path='/verify' element={<Verification/>}/>
+        
       </Routes>
       </div>
     </Router>

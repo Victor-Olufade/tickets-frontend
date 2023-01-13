@@ -3,7 +3,7 @@ import { FaSignInAlt } from 'react-icons/fa'
 import {toast} from 'react-toastify'
 import {useSelector, useDispatch} from 'react-redux'
 import { login } from '../features/auth/authSlice'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
@@ -85,6 +85,9 @@ const Login = () => {
           <div className="form-group">
             <button type='submit' className='btn btn-block'>Submit</button>
           </div>
+          <Link to='/verify'>
+            <p>Click to verify your account first</p>
+          </Link>
         </form>
       </section>
     </>
