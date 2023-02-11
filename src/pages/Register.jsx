@@ -40,7 +40,7 @@ const Register = () => {
     }
 
     dispatch(reset())
-  }, [dispatch, navigate, isError, isSuccess, token, message, isLoading])
+  }, [dispatch, navigate, isError, isSuccess, token, message])
 
   const onSubmit = (e) => {
     e.preventDefault()
