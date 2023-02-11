@@ -21,16 +21,14 @@ const ResendOtp = () => {
       toast.error(message)
     }
     if (isSuccess && success) {
-      
-        if(success === "OTP resent, check your email"){
-            toast.success(success)
-            setTimeout(() => {
-            navigate('/verify')
+      if (success === 'OTP resent, check your email') {
+        toast.success(success)
+        setTimeout(() => {
+          navigate('/verify')
         }, 1000)
-        }else{
-            toast.error("An error occurred")
-        }
-     
+      } else {
+        toast.error(success)
+      }
     }
     dispatch(reset())
   }, [dispatch, navigate, isError, isSuccess, message, success])
@@ -39,7 +37,6 @@ const ResendOtp = () => {
     e.preventDefault()
     dispatch(resendotp(email))
   }
-
 
   return (
     <>
