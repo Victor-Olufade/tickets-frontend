@@ -5,7 +5,7 @@ const BASE_URL = process.env.REACT_APP_DEPLOYED_URL
 const register = async(userData)=>{
     const response = await axios.post(`${BASE_URL}/api/users`, userData)
     if(response.data.token){
-        localStorage.setItem('token', JSON.stringify(response.data.token))
+        localStorage.setItem('token', response.data.token)
     }
     return response.data.token;
 }
@@ -36,7 +36,7 @@ const login = async(userData) => {
 const resendOtp = async(email) => {
     const response = await axios.post(`${BASE_URL}/api/users/resendotp`, {email})
     if(response.data.token){
-        localStorage.setItem('token', JSON.stringify(response.data.token))
+        localStorage.setItem('token', response.data.token)
     }
     return response.data.message;
 }
