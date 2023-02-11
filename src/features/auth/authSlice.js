@@ -9,6 +9,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
+  success: "",
   message: '',
   token: token ? token : null
 }
@@ -111,9 +112,10 @@ export const authSlice = createSlice({
       .addCase(verify.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(verify.fulfilled, (state) => {
+      .addCase(verify.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
+        state.success = action.payload
       })
       .addCase(verify.rejected, (state, action) => {
         state.isLoading = false
@@ -123,9 +125,10 @@ export const authSlice = createSlice({
       .addCase(resendotp.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(resendotp.fulfilled, (state) => {
+      .addCase(resendotp.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
+        state.success = action.payload
       })
       .addCase(resendotp.rejected, (state, action) => {
         state.isLoading = false

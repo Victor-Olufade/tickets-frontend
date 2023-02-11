@@ -14,7 +14,7 @@ const Verification = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {token, isLoading, isSuccess, isError, message} = useSelector(state=> state.auth)
+    const {token, isLoading, isSuccess, isError, message, success} = useSelector(state=> state.auth)
 
   
 
@@ -22,58 +22,51 @@ const Verification = () => {
         if(isError){
             toast.error(message)
         }
-        if(token && isSuccess){
+        if(token && isSuccess && success){
             setTimeout(()=>{
-                toast.success("Your Account Has Been Verified")
+                toast.success(success)
             }, 1000)
             navigate('/login')
         }
         dispatch(reset())
-    }, [dispatch, navigate, isError, isSuccess, message, token])
+    }, [dispatch, navigate, isError, isSuccess, message, token, success])
 
     const onSubmit = (e) => {
         e.preventDefault()
         dispatch(verify(otp, token))
     }
 
-    if(isLoading){
-        <Spinner/>
-    }
-
-   
-
-   
-
-
-
   return (
     <>
-       <section className="heading">
-        <h1>
-          <MdVerified /> Verify
-        </h1>
-        <p>Input The OTP Sent To Your Email</p>
-      </section>
-      <section className="form">
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              name="otp"
-              className="form-control"
-              id="otp"
-              value={otp}
-              onChange={(e)=>setOtp(e.target.value)}
-              placeholder="Enter your otp"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <button type='submit' className='btn btn-block'>Submit</button>
-            <Link to={'/resendotp'}><span>Resend OTP</span></Link>
-          </div>
-        </form>
-      </section>
+    {isLoading === true ? <Spinner/> :
+     <>
+     <section className="heading">
+          <h1>
+            <MdVerified /> Verify
+          </h1>
+          <p>Input The OTP Sent To Your Email</p>
+        </section><section className="form">
+            <form onSubmit={onSubmit}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="otp"
+                  className="form-control"
+                  id="otp"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  placeholder="Enter your otp"
+                  required />
+              </div>
+              <div className="form-group">
+                <button type='submit' className='btn btn-block'>Submit</button>
+                <Link to={'/resendotp'}><span>Resend OTP</span></Link>
+              </div>
+            </form>
+          </section>
+          </>
+          }
+       
     </>
   )
 }
