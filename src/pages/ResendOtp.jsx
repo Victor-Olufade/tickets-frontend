@@ -27,7 +27,7 @@ const ResendOtp = () => {
           navigate('/verify')
         }, 1000)
       } else {
-        toast.error(success)
+        toast.error("An error occurred")
       }
     }
     dispatch(reset())

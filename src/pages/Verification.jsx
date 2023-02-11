@@ -27,7 +27,7 @@ const Verification = () => {
           navigate('/login')
         }, 1000)
       } else {
-        toast.error(success)
+        toast.error("An error occurred")
       }
     }
     dispatch(reset())
