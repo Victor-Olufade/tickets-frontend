@@ -37,8 +37,12 @@ const Register = () => {
         navigate('/verify')
     }
 
+    if(isLoading){
+      <Spinner/>
+    }
+
     dispatch(reset())
-  }, [dispatch, navigate, isError, isSuccess, token, message])
+  }, [dispatch, navigate, isError, isSuccess, token, message, isLoading])
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -54,9 +58,7 @@ const Register = () => {
     }
   }
 
-  if(isLoading){
-    <Spinner/>
-  }
+ 
   return (
     <>
       <section className="heading">

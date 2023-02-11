@@ -5,7 +5,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { verify } from '../features/auth/authSlice'
 import Spinner from "../components/Spinner";
-import { reset } from '../features/auth/authSlice'
+import { reset } from '../features/auth/authSlice';
+import { Link } from "react-router-dom";
 
 
 const Verification = () => {
@@ -69,6 +70,7 @@ const Verification = () => {
           </div>
           <div className="form-group">
             <button type='submit' className='btn btn-block'>Submit</button>
+            <Link to={'/resendotp'}><span>Resend OTP</span></Link>
           </div>
         </form>
       </section>

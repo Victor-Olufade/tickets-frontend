@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import PrivateRoute from './components/PrivateRoute';
 import Tickets from './pages/Tickets';
 import Ticket from './pages/Ticket';
+import ResendOtp from './pages/ResendOtp';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         </Route>
        
           <Route path='/verify' element={<Verification/>}/>
+          <Route path='/resendotp' element={<ResendOtp/>}/>
         
       </Routes>
       </div>

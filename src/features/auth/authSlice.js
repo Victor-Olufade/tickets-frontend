@@ -48,6 +48,23 @@ export const verify = createAsyncThunk(
   }
 )
 
+export const resendotp = createAsyncThunk(
+  'auth/resendotp',
+  async (email, thunkAPI) => {
+    try {
+      return await authService.resendOtp(email)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
     return await authService.login(user)
@@ -99,6 +116,18 @@ export const authSlice = createSlice({
         state.isSuccess = true
       })
       .addCase(verify.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(resendotp.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(resendotp.fulfilled, (state) => {
+        state.isLoading = false
+        state.isSuccess = true
+      })
+      .addCase(resendotp.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

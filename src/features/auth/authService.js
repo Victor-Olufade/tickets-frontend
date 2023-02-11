@@ -33,11 +33,17 @@ const login = async(userData) => {
     return response.data;
 }
 
+const resendOtp = async(email) => {
+    const response = await axios.post(`${BASE_URL}/api/users/resendotp`, {email})
+    return response.data.message;
+}
+
 const authService = {
     register,
     logout,
     login,
-    verify
+    verify,
+    resendOtp
 }
 
 export default authService
