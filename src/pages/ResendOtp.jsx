@@ -21,10 +21,16 @@ const ResendOtp = () => {
       toast.error(message)
     }
     if (isSuccess && success) {
-      setTimeout(() => {
-        toast.success(success)
-      }, 1000)
-      navigate('/verify')
+      
+        if(success === "OTP resent, check your email"){
+            toast.success(success)
+            setTimeout(() => {
+            navigate('/verify')
+        }, 1000)
+        }else{
+            toast.error("An error occurred")
+        }
+     
     }
     dispatch(reset())
   }, [dispatch, navigate, isError, isSuccess, message, success])
